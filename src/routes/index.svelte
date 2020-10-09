@@ -26,6 +26,6 @@
     <h1>Covid 19 - US</h1>
   </div>
 </div>
-<CovidStat />
+<CovidStat {usStats} />
 <CovidChart />
 <TableContainer />
