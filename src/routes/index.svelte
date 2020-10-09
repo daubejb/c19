@@ -5,7 +5,13 @@
       const usStats = await requests.usStats();
 
       return { usStats };
-    } catch (e) {}
+    } catch (e) {
+      this.error(
+        500,
+        "There was an error calling the api, please try again in 5 minutes"
+      );
+      return;
+    }
   }
 </script>
 
@@ -13,6 +19,8 @@
   import CovidStat from "../components/CovidStat.svelte";
   import CovidChart from "../components/CovidChart.svelte";
   import TableContainer from "../components/TableContainer.svelte";
+  import About from "./about.svelte";
+  import Error from "./_error.svelte";
   export let usStats = undefined;
   console.log(usStats, "usStats");
 </script>
@@ -26,6 +34,6 @@
     <h1>Covid 19 - US</h1>
   </div>
 </div>
-<CovidStat {usStats} />
+<CovidStat {...usStats} />
 <CovidChart />
 <TableContainer />
